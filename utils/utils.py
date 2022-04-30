@@ -1,9 +1,15 @@
+"""
+scraper's global Utils for beauty of code
+"""
+import os
 import chromedriver_autoinstaller
 from selenium import webdriver
-import os
 
 
 class Utils:
+    """
+    utils of scraper
+    """
     def __init__(self, info):
         self.dirs = info.base_info['dirs']
         self.url = info.base_info['url']
@@ -19,6 +25,9 @@ class Utils:
                 os.mkdir(directory)
 
     def config_selenium(self):
+        """
+        config the selenium options and download folder
+        """
         chromedriver_autoinstaller.install(path='Data/chrome_driver')
         options = webdriver.ChromeOptions()
         for option in self.selenium_ops:

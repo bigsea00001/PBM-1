@@ -13,6 +13,7 @@ base_info = {
         'Data/pkl',
         'Data/chromedriver',
         'Data/download',
+        'log',
     ],
     'functions': [
         'a_function',

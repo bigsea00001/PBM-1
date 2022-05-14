@@ -13,15 +13,23 @@ class Utils:
     """
 
     def __init__(self):
-        pass
+        self.info = base.base_info
 
-    @classmethod
-    def _dir_check(cls) -> None:
+    def _dir_check(self) -> None:
         """
         check the directories for Util
         """
-        directories: List = base.base_info['directories']
+        directories: List = self.info['directories']
 
         for directory in directories:
             if not os.path.exists(directory):
                 os.mkdir(directory)
+
+    def do_job(self):
+        """
+        execute the functions that writen in base_info
+        """
+        functions = self.info['functions']
+
+        for function in functions:
+            eval(f'{function}')

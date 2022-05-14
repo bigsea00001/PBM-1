@@ -8,10 +8,15 @@ base_info = {
         },
         'prefs': {'download.default_directory' : 'Data/chrome_driver'},
     },
-    'dirs': [
+    'directories': [
         'Data',
         'Data/pkl',
-        'Data/chrome_driver',
-        'Data/chrome_driver',
+        'Data/chromedriver',
+        'Data/download',
+    ],
+    'functions': [
+        'a_function',
+        'b_function',
+        'c_function',
     ],
 }

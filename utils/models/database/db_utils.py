@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, List
 import pymysql
 
 
@@ -11,10 +11,24 @@ class DB_model:
         self.port = port
 
 
-
 class DB_handler:
     def __init__(self):
         pass
+
+    @classmethod
+    def get_max_len(cls, rows):
+        """
+        get max length from List that 2 dimension
+        """
+        _return_row: List[None] = [None for i in range(len(rows[0]))]
+        elements_row: List[int] = [1 for i in rows[0]]
+
+        for _, row in enumerate(rows):
+            for idx_each, each in enumerate(row):
+                if len(each) > elements_row[idx_each]:
+                    _return_row[idx_each] = len(each)
+
+        return _return_row
 
     @classmethod
     def get_conn(cls, model: DB_model = None) -> Union[None, pymysql.connect]:

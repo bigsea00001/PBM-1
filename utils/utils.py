@@ -6,7 +6,7 @@ import pymysql
 from typing import List
 
 from .info import base
-from db_models.db_model import DB_model
+from .models.database.db_model import DB_model
 
 
 class Utils:
@@ -16,6 +16,7 @@ class Utils:
 
     def __init__(self):
         self.info = base.base_info
+        self._dir_check()
 
     def _dir_check(self) -> None:
         """
@@ -47,7 +48,7 @@ class Utils:
         values_format = tuple(values_format)
 
         try:
-            conn = self.get_conn(model=raw_model) # define the model and load
+            conn = self.get_conn(model=raw_model)  # define the model and load
             curs = conn.cursor()
             for row in input_rows:
                 sql = "INSERT INTO RAW.{}".format(table_name) + \

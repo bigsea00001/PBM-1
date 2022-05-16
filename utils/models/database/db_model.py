@@ -5,4 +5,3 @@ class DB_model:
         self.user = user
         self.password = password
         self.port = port
-

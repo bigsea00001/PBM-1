@@ -27,15 +27,6 @@ class Utils:
             if not os.path.exists(directory):
                 os.mkdir(directory)
 
-    def _do_job(self):
-        """
-        execute the functions that writen in base_info
-        """
-        functions = self.info['functions']
-
-        for function in functions:
-            eval(f'{function}')
-
     @classmethod
     def get_conn(cls, model: DB_model) -> pymysql.connect:
         """

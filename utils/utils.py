@@ -15,7 +15,7 @@ class Utils:
     """
 
     def __init__(self):
-        self.info = base.base_info
+        self.base_info= base.base_info
         self.DB_handler = DB_handler()
         self.DB_model = DB_model
 

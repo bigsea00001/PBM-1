@@ -20,13 +20,16 @@ class DB_handler:
         """
         get max length from List that 2 dimension
         """
-        _return_row: List[None] = [None for i in range(len(rows[0]))]
-        elements_row: List[int] = [1 for i in rows[0]]
+        _return_row: List[None] = [1 for i in range(len(rows[0]))]
 
         for _, row in enumerate(rows):
             for idx_each, each in enumerate(row):
-                if len(each) > elements_row[idx_each]:
-                    _return_row[idx_each] = len(each)
+                if each is None:
+                    temp_len = 4
+                else:
+                    temp_len = len(each)
+                if temp_len > _return_row[idx_each]:
+                    _return_row[idx_each] = temp_len
 
         return _return_row
 

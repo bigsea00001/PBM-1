@@ -1,5 +1,17 @@
+kwargs_info = {
+    'dir_check':{
+        'type': 'func',
+        'name': '_dir_check'
+    },
+    'crawling_set':{
+        'type': 'func',
+        'name': '_selenium_ops_config'
+    },
+}
+
+
 base_info = {
-    'directories': [
+    'dirs': [
         'Data',
         'Data/pkl',
         'Data/chromedriver',
@@ -15,5 +27,5 @@ selenium_info = {
         'disable-extensions',
         'headless',
     ],
-    'prefs': {'download.default_directory' : 'Data/chrome_driver'},
+    'prefs': {'download.default_directory': 'Data/chrome_driver'},
 }

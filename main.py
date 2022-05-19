@@ -1,4 +1,6 @@
 from typing import List
-from utils.utils import Utils
+from .utils.utils import Utils
 
-utils = Utils()
+class Base_model:
+    def __init__(self, **kwargs):
+        self.utils = Utils(**kwargs)

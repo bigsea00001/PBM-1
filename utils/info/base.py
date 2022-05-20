@@ -1,30 +1,43 @@
+kwargs_schema = {
+    'dir_check': str,
+    'selenium_ops': str,
+}
+
 kwargs_list = [
     'dir_check',
     'selenium_ops',
 ]
+
 kwargs_info = {
     'dir_check': {
         'type': 'func',
-        'name': '_dir_check',
-        'return': False
+        'func': '_dir_check',
+        '_return': None,
     },
     'selenium_ops': {
         'type': 'func',
-        'name': '_selenium_options_config',
-        'return': True,
-        'return_name': 'options'
+        'func': '_selenium_options_config',
+        '_return': 'options',
+    },
+    'db_model':{
+        'type': 'DB_model',
+        'func': '_create_db_model',
+        '_return': None
     },
 }
-
 
 base_info = {
     'dirs': [
         'Data',
         'Data/pkl',
-        'Data/chromedriver',
+        'Data/model/',
         'Data/download',
+        'Data/chromedriver',
         'log',
     ],
+    'files':[
+        'Data/model/databse.json',
+    ]
 }
 
 selenium_info = {

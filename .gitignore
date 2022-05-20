@@ -1,6 +1,5 @@
 *.pkl
 *.log
-*database
 db_models.py
 
 *__pycache__/

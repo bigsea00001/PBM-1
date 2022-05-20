@@ -1,11 +1,18 @@
+kwargs_list = [
+    'dir_check',
+    'selenium_ops',
+]
 kwargs_info = {
-    'dir_check':{
+    'dir_check': {
         'type': 'func',
-        'name': '_dir_check'
+        'name': '_dir_check',
+        'return': False
     },
-    'crawling_set':{
+    'selenium_ops': {
         'type': 'func',
-        'name': '_selenium_ops_config'
+        'name': '_selenium_options_config',
+        'return': True,
+        'return_name': 'options'
     },
 }
 

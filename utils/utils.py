@@ -18,7 +18,7 @@ class Utils:
         self.kwargs = kwargs
         self.base_info = base.base_info
         self.etc_info = etc_info
-        self.pre_set= Pre_set(info=base)
+        self.pre_set = Pre_set(info=base)
         self.logger = CustomLogger().config()
         self.db_handler = DB_handler()
         self.value: Dict = {}

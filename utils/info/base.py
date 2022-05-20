@@ -45,5 +45,6 @@ selenium_info = {
         'disable-extensions',
         'headless',
     ],
-    'prefs': {'download.default_directory': 'chromedriver'},
+
+    'prefs': {'download.default_directory': 'Data/chromedriver'},
 }

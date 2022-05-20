@@ -7,8 +7,8 @@ class Base_model:
     """
     """
 
-    def __init__(self, **kwargs):
-        self.utils = Utils(**kwargs)
+    def __init__(self, etc_info=None, **kwargs):
+        self.utils = Utils(info=etc_info, **kwargs)
 
     def params_value(self):
         return self.utils.value

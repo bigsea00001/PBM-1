@@ -27,25 +27,30 @@ class Pre_set:
 
         return options
 
-    def _create_db_model(self, model) -> None:
+    @classmethod
+    def _add_db_model(cls, model):
         """
         create_db_model and save to json
         """
         import json
+
         model_json = {
-            model.db_name: {
-                'host': model.host,
-                'db_name': model.db_name,
-                'user': model.user,
-                'password': model.password,
-                'port': model.port
-            }
+            'host': model.host,
+            'db_name': model.db_name,
+            'user': model.user,
+            'password': model.password,
+            'port': model.port,
         }
 
-        with open('Data/model/Database.json', 'w') as json_file:
-            json.dump(model_json, json_file, indent=6)
-            json_file.close()
+        file_path = 'Data/model/database_models.json'
+        if not os.path.exists(file_path):
+            with open(file_path, 'w', encoding='utf-8') as create_file:
+                json_data = {'databases': {}}
+                json.dump(json_data, create_file, indent=4)
 
+        with open(file_path, 'r', encoding='utf-8') as json_file:
+            json_data = json.load(json_file)
+            json_data['databases'][model.db_name] = model_json
 
-    def _add_db_model(self, model) -> None:
-        pass
+        with open(file_path, 'w', encoding='utf-8') as out_file:
+            json.dump(json_data, out_file, indent=4)

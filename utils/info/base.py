@@ -19,9 +19,9 @@ kwargs_info = {
         'func': '_selenium_options_config',
         '_return': 'options',
     },
-    'create_db':{
+    'add_db': {
         'type': 'DB_model',
-        'func': '_create_db_model',
+        'func': '_add_db_model',
         '_return': None
     },
 }
@@ -29,12 +29,13 @@ kwargs_info = {
 base_info = {
     'dirs': [
         'Data',
-        'Data/etc_info',
+        'Data/log',
         'Data/pkl',
         'Data/model/',
+        'Data/etc_info',
         'Data/download',
         'Data/chromedriver',
-        'log',
+        'Data/model/database',
     ],
 }
 
@@ -45,6 +46,5 @@ selenium_info = {
         'disable-extensions',
         'headless',
     ],
-
     'prefs': {'download.default_directory': 'Data/chromedriver'},
 }

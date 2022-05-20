@@ -19,7 +19,7 @@ kwargs_info = {
         'func': '_selenium_options_config',
         '_return': 'options',
     },
-    'db_model':{
+    'create_db':{
         'type': 'DB_model',
         'func': '_create_db_model',
         '_return': None

@@ -35,9 +35,6 @@ base_info = {
         'Data/chromedriver',
         'log',
     ],
-    'files':[
-        'Data/model/databse.json',
-    ]
 }
 
 selenium_info = {

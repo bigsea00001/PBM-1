@@ -29,6 +29,7 @@ kwargs_info = {
 base_info = {
     'dirs': [
         'Data',
+        'Data/etc_info',
         'Data/pkl',
         'Data/model/',
         'Data/download',
@@ -44,5 +45,5 @@ selenium_info = {
         'disable-extensions',
         'headless',
     ],
-    'prefs': {'download.default_directory': 'Data/chrome_driver'},
+    'prefs': {'download.default_directory': 'chromedriver'},
 }

@@ -1,5 +1,6 @@
 *.pkl
 *.log
+*.DB_Store
 db_models.py
 
 *__pycache__/

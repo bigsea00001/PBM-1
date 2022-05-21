@@ -54,3 +54,6 @@ class Pre_set:
 
         with open(file_path, 'w', encoding='utf-8') as out_file:
             json.dump(json_data, out_file, indent=4)
+
+    def _load_json_to_db_model(self): #TODO
+        pass

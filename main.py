@@ -1,6 +1,6 @@
 from typing import List
 from .utils.utils import Utils
-from .utils.info.base import kwargs_schema
+#  from .utils.info.base import kwargs_schema
 
 
 class Base_model:
@@ -12,5 +12,8 @@ class Base_model:
         self._etc_info = etc_info
         self.utils = Utils(etc_info=self._etc_info, **kwargs)
 
-    def params_value(self):
+    def get_value(self):
+        """
+        get parameter's value
+        """
         return self.utils.value

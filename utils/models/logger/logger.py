@@ -6,10 +6,12 @@ class CustomLogger:
     def __init__(self):
         self.logger = self.config()
 
-    def config(self, log_name='CustomLogger', log_dir='Data/log/CustomLogger.log'):
+    def config(self, log_name="CustomLogger", log_dir="Data/log/CustomLogger.log"):
         logger = logging.getLogger(log_name)
-        formatter = logging.Formatter('[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s \
-                                     > %(message)s')
+        formatter = logging.Formatter(
+            "[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s \
+                                     > %(message)s"
+        )
 
         fileHandler = logging.FileHandler(log_dir)
         fileHandler.setFormatter(formatter)

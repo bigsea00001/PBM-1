@@ -35,18 +35,20 @@ class DB_handler:
         return _return_row
 
     def insert_db(self, input_rows, table_info, conn):
-        table_name = table_info['table_name']
-        table_scheme = table_info['scheme']
+        table_name = table_info["table_name"]
+        table_scheme = table_info["scheme"]
         scheme_format = tuple(table_scheme)
-        values_format = ['%s' for i in range(len(table_scheme))]
+        values_format = ["%s" for i in range(len(table_scheme))]
         values_format = tuple(values_format)
 
         try:
             curs = conn.cursor()
             for row in input_rows:
-                sql = "INSERT INTO RAW.{}".format(table_name) + \
-                    "({})".format(",\n ".join(scheme_format)) + \
-                    " VALUES({})".format(",\n".join(values_format))
+                sql = (
+                    "INSERT INTO RAW.{}".format(table_name)
+                    + "({})".format(",\n ".join(scheme_format))
+                    + " VALUES({})".format(",\n".join(values_format))
+                )
                 curs.execute(sql, row)
 
             conn.commit()

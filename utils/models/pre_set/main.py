@@ -54,3 +54,24 @@ class Pre_set:
 
         with open(file_path, 'w', encoding='utf-8') as out_file:
             json.dump(json_data, out_file, indent=4)
+
+    def _get_conn(self, db_name):
+        import json
+        import pymysql
+
+        file_path = 'Data/model/database_models.json'
+        with open(file_path, 'r', encoding='utf-8') as json_file:
+            json_data = json.load(json_file)
+
+        host = json_data[db_name]['host']
+        user = json_data[db_name]['user']
+        password = json_data[db_name]['password']
+        port = json_data[db_name]['port']
+
+        conn = pymysql.connect(host = host,
+                               db=db_name,
+                               user=user,
+                               password=password,
+                               port=port)
+
+        return conn

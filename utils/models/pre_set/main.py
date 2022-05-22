@@ -19,7 +19,7 @@ class Pre_set:
         pre_options = self.info.selenium_info['options']
         pre_experi_options = self.info.selenium_info['prefs']
 
-        options: webdriver.ChromeOption = webdriver.ChromeOptions()
+        options: webdriver.ChromeOptions = webdriver.ChromeOptions()
         for pre_option in pre_options:
             options.add_argument(pre_option)
 
@@ -54,6 +54,3 @@ class Pre_set:
 
         with open(file_path, 'w', encoding='utf-8') as out_file:
             json.dump(json_data, out_file, indent=4)
-
-    def _load_json_to_db_model(self): #TODO
-        pass

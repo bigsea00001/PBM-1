@@ -12,5 +12,5 @@ class Base_model:
         self._etc_info = etc_info
         self.utils = Utils(etc_info=self._etc_info, **kwargs)
 
-    def get_value(self):
+    def params_value(self):
         return self.utils.value

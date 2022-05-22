@@ -31,24 +31,19 @@ class Utils:
         defined_param = list(kwargs_info.keys())
         selected_params: List = set(inputed_param) & set(defined_param)
 
-        if 'dir_check' in selected_params:
-            func = kwargs_info['dir_check']['func']
-            eval(f'self.pre_set.{func}()')
-            selected_params.remove('dir_check')
-
         for param in selected_params:
             if (kwargs_info[param]['type'] == 'func' and
                     self.kwargs[param] is True):
 
-                if not kwargs_info[param]['_return'] is None:
+                if kwargs_info[param]['_return'] is None:
+                    func = kwargs_info[param]['func']
+                    eval(f'self.pre_set.{func}()')
+
+                elif not kwargs_info[param]['_return'] is None:
                     func = kwargs_info[param]['func']
                     _return_name = kwargs_info[param]['_return']
                     exec(f'{_return_name} = self.pre_set.{func}()')
                     self.value[_return_name] = eval(_return_name)
-
-                elif kwargs_info[param]['_return'] is None:
-                    func = kwargs_info[param]['func']
-                    eval(f'self.pre_set.{func}()')
 
             elif kwargs_info[param]['type'] == 'DB_model':
                 func = kwargs_info[param]['func']

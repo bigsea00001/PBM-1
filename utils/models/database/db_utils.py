@@ -1,16 +1,31 @@
-from typing import Union, List
+from typing import Union, List, Dict
 import pymysql
+import json
 
 
 class DB_model:
-    def __init__(self, host, db_name, user, password, port):
+    def __init__(self, host=None, db_name=None, user=None, password=None, port=None):
         self.host = host
         self.db_name = db_name
         self.user = user
         self.password = password
         self.port = port
 
+    def get_model(self, _db_name):
+        file_path = 'Data/model/database_models.json'
+        with open(file_path, 'r', encoding='utf-8') as json_file:
+            json_data = json.load(json_file)
 
+        #  db_name = json_data[self.get_name]['db_name']
+        db_name = _db_name
+        host = json_data[db_name]['host']
+        user = json_data[db_name]['user']
+        password = json_data[db_name]['password']
+        port = json_data[db_name]['port']
+        _model = DB_model(host=host, db_name=db_name,
+                          user=user, password=password, port=port)
+
+        return _model
 
 
 class DB_handler:
@@ -36,9 +51,11 @@ class DB_handler:
         return _return_row
 
     @classmethod
-    def get_conn(cls, model: DB_model = None) -> Union[None, pymysql.connect]:
-        if model is None:
+    def get_conn(cls, db_name: str = None) -> Union[None, pymysql.connect]:
+        if db_name is None:
             return None
+
+        model = DB_model().get_model(_db_name=db_name)
 
         conn = pymysql.connect(host=model.host,
                                db=model.db_name,

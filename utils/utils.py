@@ -44,8 +44,3 @@ class Utils:
                     _return_name = kwargs_info[param]['_return']
                     exec(f'{_return_name} = self.pre_set.{func}()')
                     self.value[_return_name] = eval(_return_name)
-
-            elif kwargs_info[param]['type'] == 'DB_model':
-                func = kwargs_info[param]['func']
-                db_model = self.kwargs[param]
-                eval(f'self.pre_set.{func}(db_model)')

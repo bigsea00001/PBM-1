@@ -20,9 +20,14 @@ kwargs_info = {
         '_return': 'options',
     },
     'add_db': {
-        'type': 'DB_model',
+        'type': 'func',
         'func': '_add_db_model',
         '_return': None
+    },
+    'db_conn':{
+        'type': 'func',
+        'func': '_get_conn',
+        '_return': 'conn'
     },
 }
 

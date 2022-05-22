@@ -1,13 +1,3 @@
-kwargs_schema = {
-    'dir_check': str,
-    'selenium_ops': str,
-}
-
-kwargs_list = [
-    'dir_check',
-    'selenium_ops',
-]
-
 kwargs_info = {
     'dir_check': {
         'type': 'func',

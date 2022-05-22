@@ -31,23 +31,22 @@ class Utils:
         defined_param = list(kwargs_info.keys())
         selected_params: List = set(inputed_param) & set(defined_param)
 
-        if 'db_conn' in selected_params:
-            func = kwargs_info['db_conn']['func']
-            _return_name = kwargs_info['db_conn']['_return']
+        if "db_conn" in selected_params:
+            func = kwargs_info["db_conn"]["func"]
+            _return_name = kwargs_info["db_conn"]["_return"]
             exec(f"{_return_name} = self.pre_set.{func}(self.kwargs['db_conn'][1])")
             self.value[_return_name] = eval(_return_name)
-            selected_params.remove('db_conn')
+            selected_params.remove("db_conn")
 
         for param in selected_params:
-            if (kwargs_info[param]['type'] == 'func' and
-                    self.kwargs[param] is True):
+            if kwargs_info[param]["type"] == "func" and self.kwargs[param] is True:
 
-                if kwargs_info[param]['_return'] is None:
-                    func = kwargs_info[param]['func']
-                    eval(f'self.pre_set.{func}()')
+                if kwargs_info[param]["_return"] is None:
+                    func = kwargs_info[param]["func"]
+                    eval(f"self.pre_set.{func}()")
 
-                elif not kwargs_info[param]['_return'] is None:
-                    func = kwargs_info[param]['func']
-                    _return_name = kwargs_info[param]['_return']
-                    exec(f'{_return_name} = self.pre_set.{func}()')
+                elif not kwargs_info[param]["_return"] is None:
+                    func = kwargs_info[param]["func"]
+                    _return_name = kwargs_info[param]["_return"]
+                    exec(f"{_return_name} = self.pre_set.{func}()")
                     self.value[_return_name] = eval(_return_name)

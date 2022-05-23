@@ -14,7 +14,7 @@ kwargs_info = {
         'func': '_add_db_model',
         '_return': None
     },
-    'db_conn':{
+    'db_conn': {
         'type': 'func',
         'func': '_get_conn',
         '_return': 'conn'

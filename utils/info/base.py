@@ -1,23 +1,27 @@
 kwargs_info = {
     'dir_check': {
         'type': 'func',
+        'input_type': 'bool',
         'func': '_dir_check',
         '_return': None,
     },
     'selenium_ops': {
         'type': 'func',
+        'input_type': 'bool',
         'func': '_selenium_options_config',
         '_return': 'options',
     },
     'add_db': {
         'type': 'func',
+        'input_type': 'DB_model',
         'func': '_add_db_model',
-        '_return': None
+        '_return': None,
     },
     'db_conn': {
         'type': 'func',
+        'input_type': 'str',
         'func': '_get_conn',
-        '_return': 'conn'
+        '_return': 'conn',
     },
 }
 

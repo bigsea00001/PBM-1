@@ -10,11 +10,11 @@ class Base_model:
 
     @overload
     def __init__(self, selenium_ops: bool, dir_check: bool, add_db: DB_model, db_conn: str):
-        pass
+        ...
 
     @overload
     def __init__(self):
-        pass
+        ...
 
     def __init__(self, etc_info=None, **kwargs):
         self._etc_info = etc_info

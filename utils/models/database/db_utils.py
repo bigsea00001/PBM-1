@@ -34,6 +34,19 @@ class DB_handler:
 
         return _return_row
 
+    @classmethod
+    def get_conn(cls, db_model):
+        """
+        get pymysql's connection
+        """
+        model = db_model
+        conn = pymysql.connect(host=model.host,
+                               db=model.db_name,
+                               user=model.user,
+                               password=model.password,
+                               port=model.port)
+        return conn
+
     def insert_db(self, input_rows, table_info, conn):
         table_name = table_info["table_name"]
         table_scheme = table_info["scheme"]

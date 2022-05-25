@@ -14,7 +14,7 @@ class Utils:
     Utils for main
     """
 
-    def __init__(self, etc_info, **kwargs):
+    def __init__(self, etc_info=None, **kwargs):
         self.kwargs = kwargs
         self.base_info = base.base_info
         self.etc_info = etc_info
@@ -52,6 +52,9 @@ class Utils:
                     self.value[_return_name] = eval(_return_name)
 
     def _etc_info_check(self):
+        if self.etc_info is None:
+            _return_data = None
+
         _info = self.etc_info
         _return_data: Dict = {}
         if isinstance(self.etc_info, Dict):

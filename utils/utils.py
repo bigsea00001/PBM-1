@@ -52,12 +52,13 @@ class Utils:
                     self.value[_return_name] = eval(_return_name)
 
     def _etc_info_check(self):
+        _info = self.etc_info
+        _return_data: Dict = {}
+
         if self.etc_info is None:
             _return_data = None
 
-        _info = self.etc_info
-        _return_data: Dict = {}
-        if isinstance(self.etc_info, Dict):
+        elif isinstance(self.etc_info, Dict):
             _info: Dict = _info
             _keys = _info.keys()
             if 'database' in _keys:

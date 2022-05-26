@@ -1,4 +1,4 @@
-from typing import List, overload
+from typing import List, overload, Dict
 from .utils import Utils, DB_handler, DB_model, info
 #  from .utils.info.base import kwargs_schema
 
@@ -18,7 +18,7 @@ class Base_model:
         self._etc_info = etc_info
         self.utils = Utils(etc_info=self._etc_info, **kwargs)
 
-    def get_value(self):
+    def get_value(self) -> Dict:
         """
         get parameter's value
         """

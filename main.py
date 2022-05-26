@@ -3,7 +3,7 @@ from .utils import Utils, DB_handler, DB_model, info
 #  from .utils.info.base import kwargs_schema
 
 
-class Base_model:
+class BaseModel:
     """
     base_model for base coding
     """

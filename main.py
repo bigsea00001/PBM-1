@@ -1,5 +1,5 @@
 from typing import List, overload
-from .utils import Utils, DB_handler, DB_model
+from .utils import Utils, DB_handler, DB_model, info
 #  from .utils.info.base import kwargs_schema
 
 
@@ -9,12 +9,10 @@ class Base_model:
     """
 
     @overload
-    def __init__(self, selenium_ops: bool, dir_check: bool, add_db: DB_model, db_conn: str):
-        ...
+    def __init__(self, selenium_ops: bool, dir_check: bool, add_db: DB_model, db_conn: str): ...
 
     @overload
-    def __init__(self):
-        ...
+    def __init__(self): ...
 
     def __init__(self, etc_info=None, **kwargs):
         self._etc_info = etc_info

@@ -15,8 +15,7 @@ class Base_model:
     def __init__(self): ...
 
     def __init__(self, etc_info=None, **kwargs):
-        self._etc_info = etc_info
-        self.utils = Utils(etc_info=self._etc_info, **kwargs)
+        self.utils = Utils(etc_info=etc_info, **kwargs)
 
     def get_value(self) -> Dict:
         """

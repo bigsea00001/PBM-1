@@ -1,6 +1,7 @@
 *.pkl
 *.log
 *.DB_Store
+test.py
 
 *__pycache__/
 *.mypy_cache

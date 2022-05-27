@@ -4,8 +4,9 @@ from typing import List, Dict, Type
 
 
 class Pre_set:
-    def __init__(self, info):
+    def __init__(self, info, etc_info = None):
         self.info = info
+        self.etc_info = etc_info
 
     def _dir_check(self) -> None:
         directories = self.info.base_info["dirs"]
@@ -35,7 +36,7 @@ class Pre_set:
         """
         import json
 
-        file_path = "./"
+        file_path = "Data/model/database_models.json"
 
         if isinstance(db_info, DB_model):
             model_info = {
@@ -74,7 +75,7 @@ class Pre_set:
 
             with open(file_path, "r", encoding="utf-8") as json_file:
                 json_data = json.load(json_file)
-                json_data["databases"][db_info.db_name] = model_dict
+                json_data["databases"][model_dict['db_name']] = model_dict
 
             with open(file_path, "w", encoding="utf-8") as out_file:
                 json.dump(json_data, out_file, indent=4)
@@ -84,17 +85,28 @@ class Pre_set:
         import json
         import pymysql
 
-        file_path = "Data/model/database_models.json"
-        with open(file_path, "r", encoding="utf-8") as json_file:
-            json_data = json.load(json_file)
+        if self.etc_info:
+            host = self.etc_info.database[db_name]['host']
+            user = self.etc_info.database[db_name]['user']
+            password = self.etc_info.database[db_name]['password']
+            port = self.etc_info.database[db_name]['port']
 
-        host = json_data[db_name]["host"]
-        user = json_data[db_name]["user"]
-        password = json_data[db_name]["password"]
-        port = json_data[db_name]["port"]
+            conn = pymysql.connect(
+                host=host, db=db_name, user=user, password=password, port=port
+            )
 
-        conn = pymysql.connect(
-            host=host, db=db_name, user=user, password=password, port=port
-        )
+        else:
+            file_path = "Data/model/database_models.json"
+            with open(file_path, "r", encoding="utf-8") as json_file:
+                json_data = json.load(json_file)
+
+            host = json_data[db_name]["host"]
+            user = json_data[db_name]["user"]
+            password = json_data[db_name]["password"]
+            port = json_data[db_name]["port"]
+
+            conn = pymysql.connect(
+                host=host, db=db_name, user=user, password=password, port=port
+            )
 
         return conn

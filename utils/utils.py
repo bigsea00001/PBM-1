@@ -22,7 +22,6 @@ class Utils:
         self.value: Dict = {}
         self._parameter_check()
 
-        self.logger = CustomLogger().config()
         self.db_handler = DB_handler()
 
     def _parameter_check(self):

@@ -4,9 +4,8 @@ from typing import List, Dict, Type
 
 
 class Pre_set:
-    def __init__(self, info, etc_info = None):
+    def __init__(self, info):
         self.info = info
-        self.etc_info = etc_info
 
     def _dir_check(self) -> None:
         directories = self.info.base_info["dirs"]
@@ -85,11 +84,11 @@ class Pre_set:
         import json
         import pymysql
 
-        if self.etc_info:
-            host = self.etc_info.database[db_name]['host']
-            user = self.etc_info.database[db_name]['user']
-            password = self.etc_info.database[db_name]['password']
-            port = self.etc_info.database[db_name]['port']
+        if isinstance(db_name, Dict):
+            host = db_name[db_name]['host']
+            user = db_name[db_name]['user']
+            password = db_name[db_name]['password']
+            port = db_name[db_name]['port']
 
             conn = pymysql.connect(
                 host=host, db=db_name, user=user, password=password, port=port

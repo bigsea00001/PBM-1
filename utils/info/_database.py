@@ -18,6 +18,7 @@ database = {
                 'scheme_name_1': 'scheme_name_1',
                 'scheme_name_2': 'scheme_name_2',
             },
+            'table_name': 'table_name',
         },
-    }
+    },
 }

@@ -6,7 +6,7 @@ import pymysql
 from typing import List, Dict
 
 from .info import base
-from .models import CustomLogger, Pre_set, DB_handler, DB_model
+from .models import Pre_set, DB_handler, DB_model
 
 
 class Utils:
@@ -39,11 +39,9 @@ class Utils:
 
         for param in selected_params:
             if kwargs_info[param]["type"] == "func" and self.kwargs[param] is True:
-
                 if kwargs_info[param]["_return"] is None:
                     func = kwargs_info[param]["func"]
                     eval(f"self.pre_set.{func}()")
-
                 elif not kwargs_info[param]["_return"] is None:
                     func = kwargs_info[param]["func"]
                     _return_name = kwargs_info[param]["_return"]
@@ -60,11 +58,6 @@ class Utils:
         elif isinstance(self.etc_info, Dict):
             _info: Dict = _info
             _keys = _info.keys()
-            if 'database' in _keys:
-                _db_model = DB_model(host=_info['database']['host'],
-                                     db_name=_info['database']['db_name'],
-                                     user=_info['database']['user'],
-                                     password=_info['database']['password'],
-                                     port=_info['database']['port'])
-                _conn = self.db_handler.get_conn(_db_model)
-                _return_data['db_conn'] = _conn
+            try:
+                _info['database']
+            except:

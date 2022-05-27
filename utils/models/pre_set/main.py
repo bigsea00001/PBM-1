@@ -1,4 +1,5 @@
 import os
+from ..database import DB_model
 from typing import List, Dict, Type
 
 
@@ -28,32 +29,56 @@ class Pre_set:
         return options
 
     @classmethod
-    def _add_db_model(cls, model):
+    def _add_db_model(cls, db_info):
         """
         create_db_model and save to json
         """
         import json
 
-        model_json = {
-            "host": model.host,
-            "db_name": model.db_name,
-            "user": model.user,
-            "password": model.password,
-            "port": model.port,
-        }
+        file_path = "./"
 
-        file_path = "Data/model/database_models.json"
-        if not os.path.exists(file_path):
-            with open(file_path, "w", encoding="utf-8") as create_file:
-                json_data = {"databases": {}}
-                json.dump(json_data, create_file, indent=4)
+        if isinstance(db_info, DB_model):
+            model_info = {
+                "host": db_info.host,
+                "db_name": db_info.db_name,
+                "user": db_info.user,
+                "password": db_info.password,
+                "port": db_info.port,
+            }
 
-        with open(file_path, "r", encoding="utf-8") as json_file:
-            json_data = json.load(json_file)
-            json_data["databases"][model.db_name] = model_json
+            if not os.path.exists(file_path):
+                with open(file_path, "w", encoding="utf-8") as create_file:
+                    json_data = {"databases": {}}
+                    json.dump(json_data, create_file, indent=4)
 
-        with open(file_path, "w", encoding="utf-8") as out_file:
-            json.dump(json_data, out_file, indent=4)
+            with open(file_path, "r", encoding="utf-8") as json_file:
+                json_data = json.load(json_file)
+                json_data["databases"][db_info.db_name] = model_info
+
+            with open(file_path, "w", encoding="utf-8") as out_file:
+                json.dump(json_data, out_file, indent=4)
+
+        elif isinstance(db_info, Dict):
+            model_dict = {
+                'host': db_info['host'],
+                'db_name': db_info['db_name'],
+                'user': db_info['user'],
+                'password': db_info['password'],
+                'port': db_info['port']
+            }
+
+            if not os.path.exists(file_path):
+                with open(file_path, "w", encoding="utf-8") as create_file:
+                    json_data = {"databases": {}}
+                    json.dump(json_data, create_file, indent=4)
+
+            with open(file_path, "r", encoding="utf-8") as json_file:
+                json_data = json.load(json_file)
+                json_data["databases"][db_info.db_name] = model_dict
+
+            with open(file_path, "w", encoding="utf-8") as out_file:
+                json.dump(json_data, out_file, indent=4)
+
 
     def _get_conn(self, db_name):
         import json

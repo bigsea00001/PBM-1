@@ -1,4 +1,9 @@
 database = {
+    'use_table': [
+        'table_name',
+        'table_name',
+        'table_name',
+    ],
     'table_list': [
         'table_name',
         'table_name',

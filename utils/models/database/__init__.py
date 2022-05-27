@@ -1,1 +1,1 @@
-from .db_utils import DB_model, DB_handler
+from .main import DB_model, DB_handler

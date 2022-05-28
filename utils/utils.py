@@ -33,7 +33,7 @@ class Utils:
         if "db_conn" in selected_params:
             func = kwargs_info["db_conn"]["func"]
             _return_name = kwargs_info["db_conn"]["_return"]
-            exec(f"{_return_name} = self.pre_set.{func}(self.kwargs['db_conn'][1])")
+            exec(f"{_return_name} = self.pre_set.{func}(self.kwargs['db_conn'])")
             self.value[_return_name] = eval(_return_name)
             selected_params.remove("db_conn")
 
@@ -56,8 +56,7 @@ class Utils:
             _return_data = None
 
         elif isinstance(self.etc_info, Dict):
+            # database
             _info: Dict = _info
             _keys = _info.keys()
-            try:
-                _info['database']
-            except:
+            table_list = _info.database['use_table']

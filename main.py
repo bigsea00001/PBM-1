@@ -9,17 +9,12 @@ class BaseModel:
     """
 
     @overload
-    def __init__(
-            self,
-            selenium_ops: bool,
-            dir_check: bool,
-            add_db: DB_model,
-            db_conn: str,
-            etc_info
-    ): ...
+    def __init__(self):
+        pass
 
     @overload
-    def __init__(self): ...
+    def __init__(self, selenium_ops: bool, dir_check: bool, add_db: DB_model, db_conn: str):
+        pass
 
     def __init__(self, **kwargs):
         self.utils = Utils(**kwargs)
